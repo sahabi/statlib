@@ -17,18 +17,22 @@ def plot_dist(data):
     f = [x for x in columns]
     ax = [x for x in columns]
     for i,column in enumerate(columns):
-        f[i] = plt.figure(i+1)
-        ax[i] = f[i].add_subplot(111)
-        ax[i].hist(data[column],bins=12 )
-        ax[i].set_xticks(np.arange(data[column].unique().min()-3, data[column].unique().max()+3, 2))
-        ax[i].set_title("P({})".format(column))       
-    plt.show()
+        print column
+        print data
+        #print data[column]
+        #f[i] = plt.figure(i+1)
+        #ax[i] = f[i].add_subplot(111)
+
+        #ax[i].hist(data[column],bins=12 )
+        #ax[i].set_xticks(np.arange(data[column].unique().min()-3, data[column].unique().max()+3, 2))
+        #ax[i].set_title("P({})".format(column))       
+    #plt.show()
 
 def plot_cond_dist(data):
     columns = list(data.columns)
     splits = {}
     for column in columns:
-       splits[column] = ceil((data[column].unique().max() - data[column].unique().min())/2.)+data[column].unique().min()
+        splits[column] = ceil((data[column].unique().max() - data[column].unique().min())/2.)+data[column].unique().min()
     pairs = list(itertools.combinations(columns, 2))
     f = [x for x in range(0,len(pairs))]
     ax = [x for x in range(0,len(pairs)*4)]
